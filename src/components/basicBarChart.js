@@ -2,11 +2,10 @@ import { jsonList } from '../exampleData';
 import { colors } from '../colors';
 
 import { Axis } from '@visx/axis';
-import { curveNatural } from '@visx/curve';
-import { scaleLinear } from '@visx/scale';
-import { LinePath } from '@visx/shape';
+import { scaleLinear, scaleBand } from '@visx/scale';
+import { Bar } from '@visx/shape';
 
-export function BasicLineChart(props) {
+export function BasicBarChart(props) {
     // Define the graph dimensions and margins
     const width = props.width || 800;
     const height = props.height || 500;
@@ -14,14 +13,13 @@ export function BasicLineChart(props) {
 
     // Define the scales of the graph
     // Linear scales are used for continuous data
+    // Band scales are used for discrete data
 
     // The x scale maps the x values to the width of the graph
-    const xScale = scaleLinear({
-        // The domain is the range of values the data can take on
-        domain: [0, jsonList.length - 1], // The first and last x values, here: from 0 to the last index of the data
-
-        // The range is the size of the graph in pixels
+    const xScale = scaleBand({
         range: [padding, width - padding], // The first and last x pixels
+        domain: jsonList.map((d) => d.x), // The x values
+        padding: 0.2, // The padding between the bars
     });
 
     // The y scale maps the y values to the height of the graph
@@ -32,6 +30,13 @@ export function BasicLineChart(props) {
         // The range is the size of the graph in pixels
         range: [height - padding, padding], // The first and last y pixels
     });
+
+    // Compose together the scale and accessor functions to get point functions
+    // The point functions are used to map the data to the graph
+    const compose = (scale, accessor) => (jsonList) =>
+        scale(accessor(jsonList));
+    const xPoint = compose(xScale, (d) => d.x);
+    const yPoint = compose(yScale, (d) => d.y);
 
     return (
         // The svg element is the root of the graph
@@ -63,7 +68,6 @@ export function BasicLineChart(props) {
                         verticalAnchor: 'middle', // The vertical anchor of the tick labels
                     })
                 }
-                hideZero // Hide the zero tick
             />
 
             {/* The y axis */}
@@ -86,15 +90,20 @@ export function BasicLineChart(props) {
                 hideZero // Hide the zero tick
             />
 
-            {/* The line path */}
-            <LinePath
-                data={jsonList} // The data to map to the line path
-                x={(d) => xScale(d.x)} // The x position of the line path
-                y={(d) => yScale(d.y)} // The y position of the line path
-                stroke={colors.accent} // The color of the line path
-                strokeWidth={2} // The width of the line path
-                curve={curveNatural} // The curve of the line path
-            />
+            {/* The bars */}
+            {jsonList.map((d, i) => {
+                // Define the height of the bar
+                const barHeight = height - padding * 2 - yPoint(d);
+                return (
+                    <Bar
+                        x={xPoint(d)} // The x position of the bar
+                        y={height - padding * 2 - barHeight} // The y position of the bar
+                        height={barHeight} // The height of the bar
+                        width={xScale.bandwidth()} // The width of the bar
+                        fill={colors.green} // The fill color of the bar
+                    />
+                );
+            })}
         </svg>
     );
 }
