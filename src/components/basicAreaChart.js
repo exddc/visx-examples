@@ -67,7 +67,6 @@ export function BasicAreaChart(props) {
                         verticalAnchor: 'middle', // The vertical anchor of the tick labels
                     })
                 }
-                hideZero // Hide the zero tick
             />
 
             {/* The y axis */}
@@ -87,7 +86,6 @@ export function BasicAreaChart(props) {
                         verticalAnchor: 'middle', // The vertical anchor of the tick labels
                     })
                 }
-                hideZero // Hide the zero tick
             />
 
             {/* Define the gradient */}
