@@ -1,6 +1,7 @@
 import './App.css';
 import { BasicLineChart } from './components/basicLineChart';
 import { BasicBarChart } from './components/basicBarChart';
+import { BasicAreaChart } from './components/basicAreaChart';
 
 function App() {
     const width = 800;
@@ -16,6 +17,10 @@ function App() {
             <div>
                 <h2>Basic Bar Chart</h2>
                 <BasicBarChart width={width} height={height} />
+            </div>
+            <div>
+                <h2>Basic Area Chart</h2>
+                <BasicAreaChart width={width} height={height} />
             </div>
         </div>
     );
