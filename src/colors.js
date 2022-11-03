@@ -8,3 +8,11 @@ export const colors = {
     red: '#B80C09',
     green: '#659B5E',
 };
+
+export const pieDataColors = {
+    a: '#f72585',
+    b: '#b5179e',
+    c: '#7209b7',
+    d: '#560bad',
+    e: '#480ca8',
+};

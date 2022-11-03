@@ -48,3 +48,11 @@ export const jsonList2 = [
     { x: 19, y: 289 },
     { x: 20, y: 303 },
 ];
+
+export const pieDataSet = [
+    { x: 'a', y: 5 },
+    { x: 'b', y: 10 },
+    { x: 'c', y: 15 },
+    { x: 'd', y: 20 },
+    { x: 'e', y: 25 },
+];
