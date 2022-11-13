@@ -2,6 +2,7 @@ import './App.css';
 import { BasicLineChart } from './components/basicLineChart';
 import { BasicBarChart } from './components/basicBarChart';
 import { BasicAreaChart } from './components/basicAreaChart';
+import { BasicLineTooltipChart } from './components/basicLineTooltipChart';
 import { BasicPieChart } from './components/basicPieChart';
 
 function App() {
@@ -22,6 +23,10 @@ function App() {
             <div>
                 <h2>Basic Area Chart</h2>
                 <BasicAreaChart width={width} height={height} />
+            </div>
+            <div>
+                <h2>Basic Area Chart</h2>
+                <BasicLineTooltipChart width={width} height={height} />
             </div>
             <div>
                 <h2>Basic Pie Chart</h2>
