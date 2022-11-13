@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/visx-examples/static/css/main.964fdded.css",
-    "main.js": "/visx-examples/static/js/main.6529bbd3.js",
+    "main.js": "/visx-examples/static/js/main.2a9b7967.js",
     "static/js/496.570033f4.chunk.js": "/visx-examples/static/js/496.570033f4.chunk.js",
     "index.html": "/visx-examples/index.html",
     "main.964fdded.css.map": "/visx-examples/static/css/main.964fdded.css.map",
-    "main.6529bbd3.js.map": "/visx-examples/static/js/main.6529bbd3.js.map",
+    "main.2a9b7967.js.map": "/visx-examples/static/js/main.2a9b7967.js.map",
     "496.570033f4.chunk.js.map": "/visx-examples/static/js/496.570033f4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.964fdded.css",
-    "static/js/main.6529bbd3.js"
+    "static/js/main.2a9b7967.js"
   ]
 }
